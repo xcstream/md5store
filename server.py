@@ -18,10 +18,10 @@ def hello():
 <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
     <div style='text-align:center'>
-        <div style='text-align:left: width:340px;background:#eeeeee;margin:0 auto;display:inline-block;padding:40px;border-radius:10px'>
+        <div style='text-align:left: width:370px;background:#eeeeee;margin:0 auto;display:inline-block;padding:40px;border-radius:10px'>
         <div> 
             md5解密
-            <input style='width:200px' id='m1'>
+            <input style='width:300px' id='m1'>
             <button  onclick='dec()'>解密</button>
         </div>
         <div>
@@ -29,7 +29,7 @@ def hello():
         </div>
         <div> 
             md5加密
-            <input style='width:200px' id='m2'>
+            <input style='width:300px' id='m2'>
             <button onclick='enc()'>加密</button>
         <div>
             结果: <span id='d2'>
