@@ -17,21 +17,26 @@ def hello():
 <body>
 <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
-    <div> 
-        md5解密
-        <input id='m1' onclick='dec()'>
-        <button onclick='dec()'>解密</button>
-    </div>
-    <div>
-        结果: <span id='d1'>
-    </div>
-    <div> 
-        md5加密
-        <input id='m2'>
-        <button onclick='enc()'>加密</button>
-    <div>
-        结果: <span id='d2'>
-    </div>
+    <div style='text-align:center'>
+        <div style='text-align:left: width:300px;background:#eeeeee;margin:0 auto;display:inline-block;padding:40px;border-radius:10px'>
+        <div> 
+            md5解密
+            <input id='m1' onclick='dec()'>
+            <button onclick='dec()'>解密</button>
+        </div>
+        <div>
+            结果: <span id='d1'>
+        </div>
+        <div> 
+            md5加密
+            <input id='m2'>
+            <button onclick='enc()'>加密</button>
+        <div>
+            结果: <span id='d2'>
+        </div>
+        </div>
+        </div>
+
     </div>
     <script>
         function dec(){

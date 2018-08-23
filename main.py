@@ -2,7 +2,7 @@ import md5
 import redis
 import time
 r = redis.Redis(host='localhost',port=8888,db=0)
-start = 100000
+start = 0
 end   = 999999
 
 count = end-start
@@ -13,6 +13,10 @@ while 1:
     m1 = md5.new()
     current = current +1
     src = str(current)
+
+    while len(src) < 6:
+        src = '0'+src
+
     m1.update(src.encode(encoding='utf-8'))
     md5r = m1.hexdigest()
     r.set(md5r, src)
