@@ -6,4 +6,4 @@ md5数据库
 
 测试地址
 
-http://140.143.53.106:5001/
+https://xcstream.github.io/md5store/
