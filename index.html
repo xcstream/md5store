@@ -7,23 +7,18 @@
 <script src="static/mqttws31.min.js"></script>
     <div style='text-align:center'>
         <div style='text-align:left: width:370px;background:#eeeeee;margin:0 auto;display:inline-block;padding:40px;border-radius:10px'>
-        <div>
-            md5解密
-            <input style='width:300px' id='m1'>
-            <button  onclick='dec()'>解密</button>
+            <div>
+                md5解密
+                <input style='width:300px' id='m1'>
+                <button  onclick='dec()'>解密</button>
+            </div>
+
+
+            <div>
+                结果: <span id='d1'>
+            </div>
         </div>
-        <div>
-            结果: <span id='d1'>
-        </div>
-        <div>
-            md5加密
-            <input style='width:300px' id='m2'>
-            <button onclick='enc()'>加密</button>
-        <div>
-            结果: <span id='d2'>
-        </div>
-        </div>
-        </div>
+
 
     </div>
     <script>
@@ -59,18 +54,10 @@
             message.destinationName = 'md5store';
             client.send(message);
 
-//            $.get('/md5decode/'+ $('#m1').val(),function(r){
-//                console.log(r)
-//                $('#d1').html(r)
-//            })
+
         }
 
-        function enc(){
-            $.get('/md5encode/'+ $('#m2').val(),function(r){
-                console.log(r)
-                $('#d2').html(r)
-            })
-        }
+
     </script>
 </body>
 </html>
