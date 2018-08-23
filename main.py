@@ -2,8 +2,8 @@ import md5
 import redis
 import time
 r = redis.Redis(host='localhost',port=8888,db=0)
-start = 13900000000
-end   = 13999999999
+start = 100000
+end   = 999999
 
 count = end-start
 current = start
