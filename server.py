@@ -5,6 +5,7 @@ import md5
 
 r = redis.Redis(host='localhost',port=8888,db=0)
 from flask import Flask
+
 app = Flask(__name__)
 
 @app.route("/")

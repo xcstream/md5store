@@ -1,0 +1,73 @@
+<html>
+<head>
+    <meta charset='utf-8'>
+</head>
+<body>
+<script src="static/jquery.min.js"></script>
+<script src="ststic/mqttws31.min.js"></script>
+    <div style='text-align:center'>
+        <div style='text-align:left: width:370px;background:#eeeeee;margin:0 auto;display:inline-block;padding:40px;border-radius:10px'>
+        <div>
+            md5解密
+            <input style='width:300px' id='m1'>
+            <button  onclick='dec()'>解密</button>
+        </div>
+        <div>
+            结果: <span id='d1'>
+        </div>
+        <div>
+            md5加密
+            <input style='width:300px' id='m2'>
+            <button onclick='enc()'>加密</button>
+        <div>
+            结果: <span id='d2'>
+        </div>
+        </div>
+        </div>
+
+    </div>
+    <script>
+        var clientId = "clientId" + new Date().getTime() +'_' + Math.random();
+        client = new Paho.MQTT.Client("am.appxc.com", Number(8084), clientId);
+        client.onConnectionLost = onConnectionLost;
+        client.onMessageArrived = onMessageArrived;
+        client.connect({useSSL:true,onSuccess:onConnect});
+
+        function onConnect() {
+            console.log("onConnect");
+            client.subscribe(clientId);
+        }
+
+        function onConnectionLost(responseObject) {
+            if (responseObject.errorCode !== 0) {
+                console.log("onConnectionLost:"+responseObject.errorMessage);
+            }
+        }
+
+        function onMessageArrived(message) {
+            console.log("onMessageArrived:"+message.payloadString);
+            var data = JSON.parse(message.payloadString);
+            $('#d1').html(data.text())
+        }
+
+        function dec(){
+            var payload = {
+                clientId:client,
+                md5:$('#m1').val()
+            }
+            client.publish('md5store',payload)
+//            $.get('/md5decode/'+ $('#m1').val(),function(r){
+//                console.log(r)
+//                $('#d1').html(r)
+//            })
+        }
+
+        function enc(){
+            $.get('/md5encode/'+ $('#m2').val(),function(r){
+                console.log(r)
+                $('#d2').html(r)
+            })
+        }
+    </script>
+</body>
+</html>
