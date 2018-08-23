@@ -47,7 +47,7 @@
         function onMessageArrived(message) {
             console.log("onMessageArrived:"+message.payloadString);
             var data = JSON.parse(message.payloadString);
-            $('#d1').html(data.text())
+            $('#d1').html(data.text)
         }
 
         function dec(){
