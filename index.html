@@ -52,7 +52,7 @@
 
         function dec(){
             var payload = {
-                clientId:client,
+                clientId:clientId,
                 md5:$('#m1').val()
             }
             var message = new Paho.MQTT.Message(JSON.stringify(payload));
