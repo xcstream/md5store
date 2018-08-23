@@ -27,4 +27,4 @@ while 1:
     if current == end:
         break
 time_end = time.time()
-print('totally cost', time_end - time_start)
+print('time elapsed', time_end - time_start)
