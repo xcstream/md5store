@@ -55,7 +55,10 @@
                 clientId:client,
                 md5:$('#m1').val()
             }
-            client.publish('md5store',payload)
+            var message = new Paho.MQTT.Message(JSON.stringify(payload));
+            message.destinationName = 'md5store';
+            client.send(message);
+
 //            $.get('/md5decode/'+ $('#m1').val(),function(r){
 //                console.log(r)
 //                $('#d1').html(r)
