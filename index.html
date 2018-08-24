@@ -38,15 +38,17 @@
 
         function onMessageArrived(message) {
             console.log("onMessageArrived:"+message.payloadString);
-            var data = JSON.parse(message.payloadString);
-            if(data.code==200){
-                $('#d1').html(data.text)
-            }
-            setTimeout(function () {
+
+            var intv = setTimeout(function () {
                 if($('#d1').html().trim()==''){
                     $('#d1').html('未找到')
                 }
             },1500)
+           var data = JSON.parse(message.payloadString);
+            if(data.code==200){
+                $('#d1').html(data.text)
+                clearInterval(intv)
+            }
         }
 
         function dec(){
