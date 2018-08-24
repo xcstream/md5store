@@ -13,7 +13,7 @@
                 <button  onclick='dec()'>解密</button>
             </div>
             <div>
-                结果: <span id='d1'>
+                结果: <span id='d1'>请稍后...</span>
             </div>
         </div>
     </div>
@@ -23,9 +23,12 @@
         client.onConnectionLost = onConnectionLost;
         client.onMessageArrived = onMessageArrived;
         client.connect({useSSL:true,onSuccess:onConnect});
+
         function onConnect() {
             console.log("onConnect");
             client.subscribe(clientId);
+            $('#d1').html('')
+
         }
 
         function onConnectionLost(responseObject) {
