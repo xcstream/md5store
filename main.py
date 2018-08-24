@@ -22,7 +22,7 @@ while 1:
     m1.update(src.encode(encoding='utf-8'))
     md5r = m1.hexdigest()
     r.set(md5r, src)
-    if (current % 5000 == 0):
+    if (current % 50000 == 0):
         print src, md5r
         per = float(current-start)/count *100
         print per , '%'
