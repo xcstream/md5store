@@ -13,13 +13,15 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic + " " + ":" + str(msg.payload))
     try:
+        code=200
         data = json.loads(msg.payload)
         inputmd5 = data["md5"]
         clientId = data["clientId"]
         result = r.get(inputmd5)
         if result == None:
             result = '未找到'
-        resultjson = json.dumps({'text':result})
+            code = 404
+        resultjson = json.dumps({'text':result,'code':code})
         client.publish(clientId, resultjson)
 
     except ValueError:
