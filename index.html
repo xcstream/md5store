@@ -5,16 +5,22 @@
 <body>
 <script src="static/jquery.min.js"></script>
 <script src="static/mqttws31.min.js"></script>
+
     <div style='text-align:center'>
-        <div style='text-align:left: width:370px;background:#eeeeee;margin:0 auto;display:inline-block;padding:40px;border-radius:10px'>
+
+        <div id="main" style='text-align:left: width:370px;background:#eeeeee;margin:0 auto;display:inline-block;padding:40px;border-radius:10px;display:none'>
             <div>
                 md5解密
                 <input style='width:300px' id='m1'>
                 <button  onclick='dec()'>解密</button>
             </div>
             <div>
-                结果: <span id='d1'>请稍后...</span>
+                结果: <span id='d1'></span>
             </div>
+        </div>
+
+        <div id="loading">
+            加载中...
         </div>
     </div>
     <script>
@@ -27,9 +33,9 @@
         function onConnect() {
             console.log("onConnect");
             client.subscribe(clientId);
-            $('#d1').html('')
-            $('#input').val('e9c9a1413ebf17f0f15c5a716d77cd69')
-
+            $('#main').show()
+            $('#loading').hide()
+            $('#m1').val('e9c9a1413ebf17f0f15c5a716d77cd69')
         }
 
         function onConnectionLost(responseObject) {
