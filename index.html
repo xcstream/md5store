@@ -42,9 +42,15 @@
             if(data.code==200){
                 $('#d1').html(data.text)
             }
+            setTimeout(function () {
+                if($('#d1').html().trim()==''){
+                    $('#d1').html('未找到')
+                }
+            },1500)
         }
 
         function dec(){
+            $('#d1').html('')
             var payload = {
                 clientId:clientId,
                 md5:$('#m1').val()
