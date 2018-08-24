@@ -2,7 +2,9 @@ import md5
 import redis
 import time
 r = redis.Redis(host='localhost',port=8888,db=0)
-start = 0
+
+
+start = int(r.get('m_start'))
 end   = 999999
 
 count = end-start
@@ -24,6 +26,7 @@ while 1:
         print src, md5r
         per = float(current-start)/count *100
         print per , '%'
+        r.set('m_start',src)
     if current == end:
         break
 time_end = time.time()
