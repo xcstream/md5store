@@ -5,7 +5,7 @@ r = redis.Redis(host='localhost',port=8888,db=0)
 
 
 start = int(r.get('m_start'))
-end   = 999999
+end   = int(r.get('m_end'))
 
 count = end-start
 current = start
