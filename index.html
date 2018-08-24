@@ -8,19 +8,21 @@
 
     <div style='text-align:center'>
 
-        <div id="main" style='text-align:left: width:370px;background:#eeeeee;margin:0 auto;display:inline-block;padding:40px;border-radius:10px;display:none'>
-            <div>
-                md5解密
-                <input style='width:300px' id='m1'>
-                <button  onclick='dec()'>解密</button>
+        <div style='text-align:left: width:370px;background:#eeeeee;margin:0 auto;display:inline-block;padding:40px;border-radius:10px;'>
+            <div style="display:none" id="main">
+                 <div>
+                    md5解密
+                    <input style='width:300px' id='m1'>
+                    <button  onclick='dec()'>解密</button>
+                </div>
+                <div>
+                    结果: <span id='d1'></span>
+                </div>
             </div>
-            <div>
-                结果: <span id='d1'></span>
-            </div>
+            <div id="loading">
+            加载中...
         </div>
 
-        <div id="loading">
-            加载中...
         </div>
     </div>
     <script>
