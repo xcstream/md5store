@@ -12,14 +12,10 @@
                 <input style='width:300px' id='m1'>
                 <button  onclick='dec()'>解密</button>
             </div>
-
-
             <div>
                 结果: <span id='d1'>
             </div>
         </div>
-
-
     </div>
     <script>
         var clientId = "clientId" + new Date().getTime() +'_' + Math.random();
@@ -36,13 +32,16 @@
         function onConnectionLost(responseObject) {
             if (responseObject.errorCode !== 0) {
                 console.log("onConnectionLost:"+responseObject.errorMessage);
+                $('#d1').html('断开链接，刷新重试')
             }
         }
 
         function onMessageArrived(message) {
             console.log("onMessageArrived:"+message.payloadString);
             var data = JSON.parse(message.payloadString);
-            $('#d1').html(data.text)
+            if(data.code==200){
+                $('#d1').html(data.text)
+            }
         }
 
         function dec(){
@@ -53,8 +52,6 @@
             var message = new Paho.MQTT.Message(JSON.stringify(payload));
             message.destinationName = 'md5store';
             client.send(message);
-
-
         }
 
 
