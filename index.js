@@ -1,12 +1,12 @@
 $('#mountpoint').html("<div style='text-align:center'><div style='text-align:left: width:370px;background:#eeeeee;margin:0 auto;display:inline-block;padding:40px;border-radius:10px;'> <div style='display:none' id='main'> <div>md5解密 <input style='width:300px' id='m1'> <button  onclick='dec()'>解密</button> </div> <div>结果: <span id='d1'></span> </div> </div> <div id='loading'>加载中... </div> </div> </div>")
 var clientId = "clientId" + new Date().getTime() +'_' + Math.random();
 client = new Paho.MQTT.Client("am.appxc.com", Number(8084), clientId);
-client.onConnectionLost = function () {
+client.onConnectionLost = function (responseObject) {
     if (responseObject.errorCode !== 0) {
         $('#d1').html('断开链接，刷新重试')
     }
 };
-client.onMessageArrived = function () {
+client.onMessageArrived = function (message) {
     var intv = setTimeout(function () {
         if($('#d1').html().trim()==''){
             $('#d1').html('未找到')
