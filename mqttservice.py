@@ -19,10 +19,10 @@ def on_message(client, userdata, msg):
         clientId = data["clientId"]
         result = r.get(inputmd5)
         if result == None:
-            result = '未找到'
-            code = 404
-        resultjson = json.dumps({'text':result,'code':code})
-        client.publish(clientId, resultjson)
+            print inputmd5 , 'not found'
+        else:
+            resultjson = json.dumps({'text':result,'code':code})
+            client.publish(clientId, resultjson)
 
     except ValueError:
         return False
