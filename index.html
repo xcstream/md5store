@@ -23,7 +23,6 @@
         client.onConnectionLost = onConnectionLost;
         client.onMessageArrived = onMessageArrived;
         client.connect({useSSL:true,onSuccess:onConnect});
-
         function onConnect() {
             console.log("onConnect");
             client.subscribe(clientId);
@@ -31,14 +30,10 @@
 
         function onConnectionLost(responseObject) {
             if (responseObject.errorCode !== 0) {
-                console.log("onConnectionLost:"+responseObject.errorMessage);
                 $('#d1').html('断开链接，刷新重试')
             }
         }
-
         function onMessageArrived(message) {
-            console.log("onMessageArrived:"+message.payloadString);
-
             var intv = setTimeout(function () {
                 if($('#d1').html().trim()==''){
                     $('#d1').html('未找到')
@@ -50,7 +45,6 @@
                 clearInterval(intv)
             }
         }
-
         function dec(){
             $('#d1').html('')
             var payload = {
@@ -61,8 +55,6 @@
             message.destinationName = 'md5store';
             client.send(message);
         }
-
-
     </script>
 </body>
 </html>
